@@ -9,6 +9,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import "./style.css"
+import { doc, updateDoc } from "firebase/firestore";
+import db from '../../../../util/getFireStore'
+
 
 
 const AntSwitch = withStyles((theme) => ({
@@ -65,14 +68,16 @@ const AntSwitch = withStyles((theme) => ({
         image_link : null,
         status : true
     },
-    
+
 ];
-  
-function Peoples() {
+
+function Peoples({classDetails}) {
 
     // const [intel, setIntel] = useState(ListOfPeople);
     const [trigger, setTrigger] = useState(true);
     const [open, setOpen] = React.useState(false);
+    const [intel, setIntel] = useState(classDetails.students)
+    // const [selectedCode, setSelectedCode] = useState(classDetails.)
 
     const style = useStyles();
 
@@ -80,8 +85,20 @@ function Peoples() {
         setOpen(true);
     };
 
-    const handleClose = () => {
+    const handleClose = async() => {
         setOpen(false);
+        //console.log(intel);
+        /// saving intel to database
+
+        /// This is the final functionality we're
+        /// gonna include to this hell...
+        /// let us end this
+
+        const intelRef = doc(db, "class_codes" , classDetails.code_class );
+
+        await updateDoc(intelRef, {
+            students : intel
+        });
     };
 
 
@@ -91,27 +108,32 @@ function Peoples() {
     }
 
     const PeopleList = (e) =>{
-    
+
         const [state, setState] = React.useState(e.value);
-        
+
         const handleChange = (event) => {
             setTrigger(false);
             var tempObj = state;
-            console.log(tempObj);
-            tempObj.status = event.target.checked;
-            setState({ ...state, status : tempObj.status });
-            ListOfPeople[e.index].status = tempObj.status;
-        //   setIntel({...intel ,  })  
-            
+            // console.log(tempObj);
+            tempObj.auth = event.target.checked;
+            setState({ ...state, status : tempObj.auth });
+            let newArray = [...intel];
+            newArray[e.index] = tempObj;
+            setIntel(newArray);
+            // ListOfPeople[e.index].status = tempObj.status;
+        //   setIntel({...intel ,  })
+
         };
-    
-        return(  
+
+        // console.log(state);
+
+        return(
               <div  className = "root">
                   <div className = "elements">
-                      
+
                       <div className = "fundamentals_options">
                             <Switch
-                                checked={state.status}
+                                checked={state.auth}
                                 onChange={handleChange}
                                 name = {state.name}
                                 inputProps={{ 'aria-label': 'secondary checkbox' }}
@@ -123,31 +145,31 @@ function Peoples() {
                             </h6>
                       </div>
                       <div className = "fundamentals_avatar">
-  
+
                       </div>
-                      
+
                       <div className = "fundamentals_name">
-                          
+
                               <label> {state.name} </label>
                       </div>
                   </div>
                   <br/>
               </div>
-          
+
         );
     }
 
     //const intel = demoPeople;
-    const intel = ListOfPeople;
-    
+    // const intel = ListOfPeople;
+
     return(
         <div>
             <div className = "confirm_button" >
-                <Button variant="contained" onClick = {savingValue} disabled = {trigger} > 
+                <Button variant="contained" onClick = {savingValue} disabled = {trigger} >
                     ChangeIt
                 </Button>
             </div>
-            
+
             <ul type = "none">
                 {intel.map((item , index) => <PeopleList key = {index} index = {index} value = {item} />)}
                 {/* <Flatlist list = {intel} renderItem = { <PeopleList item = {intel}/> } /> */}
@@ -175,6 +197,6 @@ function Peoples() {
             </Dialog>
         </div>
     )
-    
+
 }
 export default Peoples;
