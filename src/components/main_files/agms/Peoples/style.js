@@ -3,11 +3,11 @@ import { red } from "@material-ui/core/colors";
 
 export const useStyles = makeStyles(theme => ({
     root:{
-        //flexGrow : 1,
+        flexGrow : 1,
         //alignItems : 'center',
         //backgroundColor : 'red',
     },
-    elements:{
+    personContainer:{
         display : 'flex',
         height : '60px',
         Width : '50px',
@@ -28,28 +28,38 @@ export const useStyles = makeStyles(theme => ({
         alignContent : 'center',
         justifyContent : 'center'
     },
-    fundamentals_name:{
+    personName:{
         minWidth : '10px',
         marginLeft : '10px'
     },
-    fundamentals_options:{
-        backgroundColor : 'blue',
+    switchBase:{
+        // backgroundColor : 'blue',
         // height : '35px',
         width : '35px',
         // borderRadius : '50%',
          //marginRight: '30px',
         marginLeft : '10px'
     },
-    fundamentals_status:{
-        backgroundColor : 'red',
+    personStatus:{
+        // backgroundColor : 'red',
         textAlign : 'center',
         marginLeft : '30px',
         width : '50px'
     },
     confirm_button:{
-        backgroundColor : 'blue',
-        width : '10px',
-        marginLeft: '85%',
+        // backgroundColor : 'blue',
+        // width : '10px',
+        marginLeft: '46%',
+    },
+    buttonStyle:{
+        backgroundColor : '#ff8585'
+    },
+    nameStyle:{
+        fontSize : '15px',
+        fontFamily : 'arial'
+    },
+    peopleStyle :{
+        minHeight : '90vh'
     }
 
 }));

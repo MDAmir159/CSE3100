@@ -22,16 +22,25 @@ function Class1Body({user_details , classDetails}){
                             <div className = {styles.header_avatar}>
                                 <img src = "" />
                             </div>
+                            
                             <div className = {styles.post_details}>
-                                <label> {e.value.post_user } </label><br/>
-                                <label> {e.value.post_time} </label>
+                                <label className = {styles.post_user_name}> {e.value.post_user } </label><br/>
+                                <label className = {styles.post_time}> {e.value.post_time} </label>
+                                {/* <p className = {styles.post_user_name}>
+                                    MD Amirul Islam
+                                </p>
+                                <p className = {styles.post_time}>26 Jul</p> */}
                             </div>
                         </div>
                         <Divider/>
                         <div className = {styles.box_container}>
-                            <text>
-                                <h2> {e.value.post_text} </h2>
-                            </text>
+                            <div className = {styles.text_container}>
+                                <br/>
+                                <label className = {styles.post_text_p}>
+                                    {e.value.post_text}
+                                </label>
+                            </div>
+                            
                             <div className = {styles.media_container}>
                                 <div className = {styles.media_container_unit}>
                                     <a 

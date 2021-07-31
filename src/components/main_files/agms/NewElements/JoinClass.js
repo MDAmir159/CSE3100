@@ -9,9 +9,21 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import db from '../../../../util/getFireStore'
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { doc, addDoc, getFirestore, updateDoc , getDoc , arrayUnion} from "firebase/firestore"; 
+import { makeStyles } from '@material-ui/core/styles';
 
 
 function JoinClass({user_details , updateUI}) {
+
+    const useStyles = makeStyles((theme) => ({
+        button_style:{
+            minHeight : '60px',
+            minWidth : '200px',
+            backgroundColor : '#dff2e1',
+            borderRadius : '10px'
+        }
+    }));
+
+    const styles = useStyles();
 
     const newClassDetails = {
         code : ""
@@ -71,7 +83,7 @@ function JoinClass({user_details , updateUI}) {
     }
     return (
         <div>
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        <Button className = {styles.button_style}  onClick={handleClickOpen}>
            Join Class
         </Button>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">

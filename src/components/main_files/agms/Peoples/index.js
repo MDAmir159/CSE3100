@@ -12,14 +12,12 @@ import "./style.css"
 import { doc, updateDoc } from "firebase/firestore";
 import db from '../../../../util/getFireStore'
 
-
-
 const AntSwitch = withStyles((theme) => ({
     root: {
       width: 28,
       height: 16,
-      padding: 0,
       display: 'flex',
+      backgroundColor : 'red'
     },
     switchBase: {
       padding: 2,
@@ -73,6 +71,8 @@ const AntSwitch = withStyles((theme) => ({
 
 function Peoples({classDetails}) {
 
+    console.log(classDetails);
+
     // const [intel, setIntel] = useState(ListOfPeople);
     const [trigger, setTrigger] = useState(true);
     const [open, setOpen] = React.useState(false);
@@ -110,7 +110,7 @@ function Peoples({classDetails}) {
     const PeopleList = (e) =>{
 
         const [state, setState] = React.useState(e.value);
-
+        
         const handleChange = (event) => {
             setTrigger(false);
             var tempObj = state;
@@ -128,10 +128,9 @@ function Peoples({classDetails}) {
         // console.log(state);
 
         return(
-              <div  className = "root">
-                  <div className = "elements">
-
-                      <div className = "fundamentals_options">
+              <div  className = {style.root}>
+                  <div className = {style.personContainer}>
+                      <div className = {style.switchBase}>
                             <Switch
                                 checked={state.auth}
                                 onChange={handleChange}
@@ -139,18 +138,17 @@ function Peoples({classDetails}) {
                                 inputProps={{ 'aria-label': 'secondary checkbox' }}
                             />
                       </div>
-                      <div className = "fundamentals_status">
-                            <h6>
-                                {state.status ? "In" : "Out"}
-                            </h6>
+                      <div className = {style.personStatus}>
+                            <label className = {style.nameStyle}>
+                                {state.auth ? "In" : "Out"}
+                            </label>
                       </div>
-                      <div className = "fundamentals_avatar">
+                      {/* <div className = "fundamentals_avatar">
 
-                      </div>
+                      </div> */}
 
-                      <div className = "fundamentals_name">
-
-                              <label> {state.name} </label>
+                      <div className = {style.personName}>
+                            <label className = {style.nameStyle}>{state.name} </label>
                       </div>
                   </div>
                   <br/>
@@ -163,10 +161,10 @@ function Peoples({classDetails}) {
     // const intel = ListOfPeople;
 
     return(
-        <div>
-            <div className = "confirm_button" >
-                <Button variant="contained" onClick = {savingValue} disabled = {trigger} >
-                    ChangeIt
+        <div className = {style.peopleStyle}>
+            <div className = {style.confirm_button} >
+                <Button className = {style.buttonStyle} variant="contained" onClick = {savingValue} disabled = {trigger} >
+                    Change It !!
                 </Button>
             </div>
 

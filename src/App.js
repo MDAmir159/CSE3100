@@ -2,7 +2,6 @@ import React from 'react';
 import LogIn from './components/main_files/LogIn';
 import Student from './components/main_files/agms/Student/index'
 import Faculty from './components/main_files/agms/Faculty/index';
-import InitiateClassOps from './components/main_files/agms/Student/InitiateClassOps';
 import { Route , BrowserRouter , Switch } from 'react-router-dom';
 import Test from './Test';
 import Peoples from './components/main_files/agms/Peoples';

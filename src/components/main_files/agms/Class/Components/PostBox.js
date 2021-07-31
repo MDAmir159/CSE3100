@@ -24,6 +24,8 @@ import { getStorage, ref , uploadBytes ,uploadBytesResumable, getDownloadURL} fr
 import { doc, setDoc ,collection, addDoc, getFirestore, updateDoc, arrayUnion} from "firebase/firestore"; 
 import storage from '../../../../../util/getStorage';
 import db from '../../../../../util/getFireStore';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
     root:{
@@ -62,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     send_button:{
         display : 'flex',
         // backgroundColor : 'blue',
-        marginLeft : '86.5%'
+        marginLeft : '98ch'
     },
     send_button_container:{
         marginTop : '35%'
@@ -71,7 +73,18 @@ const useStyles = makeStyles((theme) => ({
         display : 'flex',
         flexDirection : 'row',
         marginTop : '10%'
-    }
+    },
+    button_design:{
+        backgroundColor : '#c1cee3'
+    },
+    progress_bar :{
+        minWidth : '40ch',
+        backgroundColor:'red'
+    },
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+        color: '#fff',
+    },
     
   }));
 
@@ -93,6 +106,10 @@ function PostBox({user_details , classDetails}) {
     const [imagelink, setImagelink] = useState("");
     const [videolink, setVideolink] = useState("");
     const [open, setOpen] = React.useState(false);
+
+    const [progressImage, setProgressImage] = useState(10);
+    const [progressPdf, setProgressPdf] = useState(10);
+    const [progressVideo, setProgressVideo] = useState(10);
 
     const post_fake_pdf = "https://firebasestorage.googleapis.com/v0/b/my-final-app-3100.appspot.com/o/classes%2Ffake_materials%2Fuuser.pdf?alt=media&token=d0aeb5d8-e0e9-4f5b-bc73-68f24a1030ce";
     const post_fake_video = "https://firebasestorage.googleapis.com/v0/b/my-final-app-3100.appspot.com/o/classes%2Ffake_materials%2FWhatsApp%20Video%202021-07-16%20at%2011.53.24%20PM.mp4?alt=media&token=31d6e49e-a636-4ec1-be49-ac87a6645fc0";
@@ -230,16 +247,59 @@ function PostBox({user_details , classDetails}) {
         handleClose();
     }
 
-    const Add_post = (e) =>{
-        e.preventDefault();
+    const uploadMedia = async () =>{
+        // uploadImage();
+        // uploadVideo();
+        // uploadPdf();
 
-        formatAMPM();
+        var path;
+        path = 'classes' + '/' + selectedCode + '/' + storageKey + '/' + 'video' + '/' + selectedimage.name ;
+        const storageRef1 = ref(storage, path);
+        try{
+            await uploadBytes(storageRef1, selectedvideo)
+            const url = await getDownloadURL(ref(storage, path))
+            setVideolink(url);
+            console.log("v");
+        }catch(error){
+            console.log(error);
+        }
 
-        uploadImage();
-        uploadVideo();
-        uploadPdf();
+        path = 'classes' + '/' + selectedCode + '/' + storageKey + '/' + 'pdf' + '/' + selectedpdf.name ;
+        const storageRef2 = ref(storage, path);
+        try{
+            await uploadBytes(storageRef2, selectedpdf)
+            const url = await getDownloadURL(ref(storage, path))
+            setPdflink(url);
+            console.log("P");
+        }catch(error){
+            console.log(error);
+        }
 
+        path = 'classes' + '/' + selectedCode + '/' + storageKey + '/' + 'image' + '/' + selectedimage.name ;
+        const storageRef3 = ref(storage, path);
+        try{
+            await uploadBytes(storageRef3, selectedimage)
+            const url = await getDownloadURL(ref(storage, path))
+            setImagelink(url);
+            console.log("k");
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    const Add_post = () =>{
+        console.log("startted");
+        uploadMedia();
+        console.log("Stopped");
         handleClickOpen();
+    }
+
+    const Add_p = (e) =>{
+        e.preventDefault();
+        formatAMPM();
+        setTimeout(()=>{console.log("yeeeeeeeeeeeee");} ,3000)
+        console.log("over over over");
+        Add_post();
     }
 
     const PopUp = () =>{
@@ -300,9 +360,9 @@ function PostBox({user_details , classDetails}) {
                                     <PictureAsPdfRoundedIcon/>
                                 </label>
                             </div>
-                            <div>
-                                {/* <label>AGM</label>   */}
-                            </div>
+                            {/* <div className = {style.progress_bar}>
+                                <label>AGM</label>  
+                            </div> */}
                             {/* <input
                                 id="pdf"
                                 // accept="file_extension|audio/*|video/*|image/*|media_type"
@@ -333,9 +393,9 @@ function PostBox({user_details , classDetails}) {
                                     <VideoLibraryIcon/>
                                 </label>
                             </div>
-                            <div>
-                                {/* <label>AGM</label> */}
-                            </div>
+                            {/* <div className = {style.progress_bar}>
+                                <label>AG</label>
+                            </div> */}
                             {/* <input
                                 id="video"
                                 accept="video/*"
@@ -366,9 +426,9 @@ function PostBox({user_details , classDetails}) {
                                     <ImageIcon/>
                                 </label>
                             </div>
-                            <div>
-                                {/* <label>AGM</label> */}
-                            </div>
+                            {/* <div className = {style.progress_bar}>
+                                <label>AGMs</label>
+                            </div> */}
                             
                         </div>
                     </div>
@@ -376,10 +436,11 @@ function PostBox({user_details , classDetails}) {
                         <div className = {style.send_button_container}>
                             <Button
                                 variant="contained"
-                                color="primary"
+                                className = {style.button_design }
                                 endIcon = { <SendIcon/> }
                                 type = "submit"
-                                onClick = {Add_post}
+                                onClick = {Add_p}
+                                // onClick = {handleToggle(true)}
                                 size = "large"
                             >
                                 Post

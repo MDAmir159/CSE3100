@@ -8,9 +8,20 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import db from '../../../../util/getFireStore';
 import { doc, setDoc ,collection, addDoc, getFirestore, updateDoc , arrayUnion} from "firebase/firestore"; 
-
+import { makeStyles } from '@material-ui/core/styles';
 
 function CreateClass({user_details , setintel , updateUI}){
+
+    const useStyles = makeStyles((theme) => ({
+        button_style:{
+            minHeight : '60px',
+            minWidth : '200px',
+            backgroundColor : '#dff2e1',
+            borderRadius : '10px'
+        }
+    }));
+
+    const styles = useStyles();
 
     const newClassDetails = {
         faculty_email: user_details.email,
@@ -73,8 +84,8 @@ function CreateClass({user_details , setintel , updateUI}){
     }
     return (
         <div>
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-           Create Class
+        <Button variant="outlined" className = {styles.button_style} onClick={handleClickOpen}>
+           <b>Create Class</b>
         </Button>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">New Class </DialogTitle>

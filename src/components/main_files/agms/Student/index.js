@@ -14,6 +14,8 @@ import { Label, Menu } from "@material-ui/icons";
 import { Avatar, IconButton } from '@material-ui/core';
 import Header from '../Materials/Header'
 import Body from '../Materials/Body';
+import Image from '../../../../../src/media/janko-ferlic-sfL_QOnmy00-unsplash.jpg';
+import './index.css'
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -26,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
   large:{
     width : theme.spacing(50),
     height : theme.spacing(50)
-  }
+  },
+  
 }));
 
 function Student({SignOut , user_details}){
@@ -66,23 +69,22 @@ function Student({SignOut , user_details}){
   );
 
   return (
-    <div>
-      {['left'].map((anchor) => (
-        <React.Fragment key={anchor}>
-
-          {/* <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button> */}
-          
-          <div>
-            <Header toggleDrawer = {toggleDrawer} anchor = {anchor}/>
-            <Body user_details = {user_details} />
-          </div>
-          
-          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
-    </div>
+      <div className = "studentOne">
+        {['left'].map((anchor) => (
+          <React.Fragment key={anchor}>
+            {/* classLists */}
+            <div className = "container">
+              <Header toggleDrawer = {toggleDrawer} anchor = {anchor}/>
+              <Body user_details = {user_details} />
+            </div>
+            
+            <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+              {list(anchor)}
+            </Drawer>
+          </React.Fragment>
+        ))}
+      </div>
+    
   );
 }
 export default Student;

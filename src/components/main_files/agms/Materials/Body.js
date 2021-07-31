@@ -23,9 +23,14 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'center',
       paddingTop : '95%',
       color: theme.palette.text.secondary,
+      backgroundColor : '#e8e8e8',
       borderRadius : theme.spacing(5),
       //paddingRight : '20px'
     },
+    button:{
+      marginLeft : '160ch',
+      minHeight : '2ch'
+    }
   }));
 
 function Body({user_details}){
@@ -165,8 +170,12 @@ function Body({user_details}){
         {
           ((classroom.class_name === "") && (situation.value === false)) ? (   /// the situation when we haven't selected any classes
             <div className={classes.root}>
-                {(user_details.type === "student") ? (<JoinClass user_details = {user_details} updateUI = {updateUI}/>) 
-                  : (<CreateClass user_details ={user_details} setintel = {setintel} updateUI = {updateUI}/>)}
+              <div className = {classes.button}>
+                {
+                  (user_details.type === "student") ? (<JoinClass user_details = {user_details} updateUI = {updateUI}/>) 
+                  : (<CreateClass user_details ={user_details} setintel = {setintel} updateUI = {updateUI}/>)
+                }
+              </div>
                 <br/>
                 <Grid container spacing={1}>
                     <Grid container item xs={8} spacing={4}>

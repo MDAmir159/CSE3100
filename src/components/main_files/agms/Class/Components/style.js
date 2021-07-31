@@ -30,7 +30,8 @@ export const useStyles = makeStyles((theme) =>({
         //backgroundColor : 'green'
     },
     box_container:{
-
+        display: 'flex',
+        flexDirection : 'column'
     },
     header_avatar:{
         height:'50px',
@@ -46,10 +47,26 @@ export const useStyles = makeStyles((theme) =>({
     },
     media_container : {
         display : 'flex',
-        flexDirection : 'row'
+        flexDirection : 'row',
+        marginTop : '2ch'
     },
     media_container_unit :{
         marginLeft : '10px'
+    },
+    post_user_name:{
+        fontSize : '20px',
+        color : '#3d3c38',
+        fontFamily : 'arial'
+    },
+    post_time:{
+        color : '#3d3c38',
+        fontFamily : 'arial',
+    },
+    post_text_p:{
+        color : '#3d3c38',
+        fontSize : '25px',
+        fontFamily : 'arial',
     }
+
 
 }));

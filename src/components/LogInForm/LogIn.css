@@ -1,4 +1,9 @@
-.login-container{
+.root{
+    display: flex;
+    height: 98vh;
+    background-image: url("C:\Users\IC\my-app\src\components\LogInForm\VvHazk (1).jpg");
+}
+.root .login-container{
     width: 55vh;
     height: 60vh;
     background-image: linear-gradient(to bottom right , rgba(46, 133, 19, 0.733)  , #FFAB);
@@ -9,34 +14,34 @@
     
 }
 
-.login-container .login-elements{
+.root .login-container .login-elements{
     display: block;
     margin-top: 30px;
 }
 
-.login-container .login-elements .h2{
+.root .login-container .login-elements .h2{
     font-family: cursive;
     margin-left: 162px;
     color: rgb(18, 20, 20);
 }
-.login-container .login-elements .login-elements-labels{
+.root .login-container .login-elements .login-elements-labels{
     margin-bottom: 15px;
     margin-left: 20px;
     font-size: 20px;
     font-family: cursive;
 }
 
-.login-container .login-elements .login-elements-input{
+.root .login-container .login-elements .login-elements-input{
     border-radius: 30%;
 }
 
-.login-container .login-elements  .login-elements-select_options{
+.root .login-container .login-elements  .login-elements-select_options{
     width: 92%;
     font-family: cursive;
     cursor: null;
 }
 
-.login-container .login-elements input{
+.root .login-container .login-elements input{
     width: 90%;
     margin-left: 20px;
     margin-bottom: 20px;
@@ -49,14 +54,14 @@
     font-family: cursive;
 }
 
-.login-container .login-elements input:focus{
+.root .login-container .login-elements input:focus{
     box-shadow: 0px 0px 3px rgba(46, 133, 19, 0.733);
     background-color: rgb(236, 229, 220);
     font-size: 15px;
     font-family: cursive;
 }
 
-.login-container .login-elements input[type = submit ]{
+.root .login-container .login-elements input[type = submit ]{
     width: 92%;
     font-size: 15px;
     font-family: cursive;
@@ -66,11 +71,11 @@
 }
 
 
-.login-container .login-elements input:focus[type = submit]{
+.root .login-container .login-elements input:focus[type = submit]{
     background-color: rgb(8, 59, 48);
 }
 
-.login-container .login-elements .login-elements-select_options{
+.root .login-container .login-elements .login-elements-select_options{
     margin-left:  40px;
     margin-bottom: 40px;   
 }

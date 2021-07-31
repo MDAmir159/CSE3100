@@ -10,55 +10,58 @@ function LogInForm({SignIn}){
         SignIn(detail);
     }
     return(
-        <form onSubmit = {submitHandler}> 
-            <div className = "login-container">
-                <div className = "login-elements">
-                    {/* s */}
-                    <div className = "login-elements-labels">
-                        <label htmlFor = "name"> E - mail / Handle : </label>
-                    </div>
+        <div className ="root">
+            <form onSubmit = {submitHandler}>
+                <div className = "login-container">
+                    <div className = "login-elements">
+                        {/* s */}
+                        <div className = "login-elements-labels">
+                            <label htmlFor = "name"> E - mail / Handle : </label>
+                        </div>
 
-                    <div className = "login-elements-input">
-                        <input
-                            type = "email" 
-                            name = "email"  
-                            placeholder = "Enter your email or handle" 
-                            onChange = {e => setdetail({...detail , email : e.target.value})} 
-                            value = {detail.name}
-                        />
-                    </div>
-                    <div className = "login-elements-labels">
-                        <label htmlFor = "password" > Password : </label>
-                    </div>
+                        <div className = "login-elements-input">
+                            <input
+                                type = "email" 
+                                name = "email"  
+                                placeholder = "Enter your email or handle" 
+                                onChange = {e => setdetail({...detail , email : e.target.value})} 
+                                value = {detail.name}
+                            />
+                        </div>
+                        <div className = "login-elements-labels">
+                            <label htmlFor = "password" > Password : </label>
+                        </div>
 
-                    <div className = "login-elements-input">
-                        <input 
-                            type = "password" 
-                            name = "password" 
-                            placeholder = "Enter your password"
-                            onChange = {e => setdetail({...detail , password : e.target.value})} 
-                            value = {detail.password}
-                        />
-                    </div>
-                    
-                    <div className = "login-elements-labels">
-                        <label htmlFor = "select" > Get logged in as : </label>
-                    </div>
+                        <div className = "login-elements-input">
+                            <input 
+                                type = "password" 
+                                name = "password" 
+                                placeholder = "Enter your password"
+                                onChange = {e => setdetail({...detail , password : e.target.value})} 
+                                value = {detail.password}
+                            />
+                        </div>
+                        
+                        <div className = "login-elements-labels">
+                            <label htmlFor = "select" > Get logged in as : </label>
+                        </div>
 
-                    <div>                    
-                        <select  className = "login-elements-labels" value = {detail.type} onChange={ e => setdetail({...detail , type : e.target.value })}>
-                            <option value="select">Select</option>
-                            <option value="faculty">Faculty</option>
-                            <option value="student">Student</option>
-                        </select>
-                    </div>
-                    
-                    <div className = "login-elements-submit">
-                        <input type = "submit" name = "submit" value = "Sign In"  onClick = {SignIn} />
+                        <div>                    
+                            <select  className = "login-elements-labels" value = {detail.type} onChange={ e => setdetail({...detail , type : e.target.value })}>
+                                <option value="select">Select</option>
+                                <option value="faculty">Faculty</option>
+                                <option value="student">Student</option>
+                            </select>
+                        </div>
+                        
+                        <div className = "login-elements-submit">
+                            <input type = "submit" name = "submit" value = "Sign In"  onClick = {SignIn} />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        
 
     );
     
