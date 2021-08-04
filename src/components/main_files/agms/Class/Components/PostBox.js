@@ -107,6 +107,8 @@ function PostBox({user_details , classDetails}) {
     const [videolink, setVideolink] = useState("");
     const [open, setOpen] = React.useState(false);
 
+    const [isLoadingInterfaceOpen, setIsLoadingInterfaceOpen] = useState(false)
+
     const [progressImage, setProgressImage] = useState(10);
     const [progressPdf, setProgressPdf] = useState(10);
     const [progressVideo, setProgressVideo] = useState(10);
@@ -114,6 +116,16 @@ function PostBox({user_details , classDetails}) {
     const post_fake_pdf = "https://firebasestorage.googleapis.com/v0/b/my-final-app-3100.appspot.com/o/classes%2Ffake_materials%2Fuuser.pdf?alt=media&token=d0aeb5d8-e0e9-4f5b-bc73-68f24a1030ce";
     const post_fake_video = "https://firebasestorage.googleapis.com/v0/b/my-final-app-3100.appspot.com/o/classes%2Ffake_materials%2FWhatsApp%20Video%202021-07-16%20at%2011.53.24%20PM.mp4?alt=media&token=31d6e49e-a636-4ec1-be49-ac87a6645fc0";
     const post_fake_image = "https://firebasestorage.googleapis.com/v0/b/my-final-app-3100.appspot.com/o/classes%2Ffake_materials%2FMy%20Post%20(4).png?alt=media&token=ff949e01-2168-448f-9660-03e5de62202c";
+
+
+    useEffect(() => {
+        if((pdflink !== "") && (imagelink !== "") && (videolink !== "")){
+            console.log("Confirmed !!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            setIsLoadingInterfaceOpen(false);
+            handleClickOpen();
+        }
+        
+    }, [pdflink,imagelink,videolink])
 
     const handleClickOpen =  () => {
         setOpen(true);
@@ -291,15 +303,25 @@ function PostBox({user_details , classDetails}) {
         console.log("startted");
         uploadMedia();
         console.log("Stopped");
-        handleClickOpen();
+        
+        // handleClickOpen();
     }
 
     const Add_p = (e) =>{
         e.preventDefault();
         formatAMPM();
-        setTimeout(()=>{console.log("yeeeeeeeeeeeee");} ,3000)
-        console.log("over over over");
+        console.log(isLoadingInterfaceOpen);
+        setIsLoadingInterfaceOpen(true);
+        alert('While laoding please be patient');
         Add_post();
+    }
+
+    const LoadingInterface = () =>{
+        return(
+            <Backdrop open={isLoadingInterfaceOpen} onClick = {() => {setIsLoadingInterfaceOpen(false)}}>
+                <label>While loading please be patient</label>
+            </Backdrop>
+        );
     }
 
     const PopUp = () =>{
@@ -445,11 +467,13 @@ function PostBox({user_details , classDetails}) {
                             >
                                 Post
                             </Button>
-                            <PopUp/>
+                            {/* <LoadingInterface /> */}
+                            <PopUp/>   
                         </div>
                     </div>
                 </div>
-            </form>            
+            </form> 
+                    
         </div>
     );
 }

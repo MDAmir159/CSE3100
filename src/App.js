@@ -11,6 +11,7 @@ import Test1 from '../src/Test1'
 import ClassBody from './components/main_files/agms/Class/Components/ClassBody';
 import Test2 from '../src/Test2'
 import GoogleFontLoader from 'react-google-font-loader';
+import Routes from './Routes'
 // import Test from '../src/Test.js'
 
 function App() {
@@ -24,8 +25,9 @@ function App() {
     />
   
   return (
+    <Routes />
     //<Test/>
-    <LogIn/>
+    //<LogIn/>
     //<FirebaseDatabaseProvider>
        //<LogIn/>
     //</FirebaseDatabaseProvider>
