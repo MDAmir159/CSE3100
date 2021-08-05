@@ -10,7 +10,7 @@ import db from '../../../../util/getFireStore';
 import { doc, setDoc ,collection, addDoc, getFirestore, updateDoc , arrayUnion} from "firebase/firestore"; 
 import { makeStyles } from '@material-ui/core/styles';
 
-function CreateClass({user_details , setintel , updateUI}){
+function CreateClass({intel , user_details , setintel , updateUI}){
 
     const useStyles = makeStyles((theme) => ({
         button_style:{
@@ -70,6 +70,8 @@ function CreateClass({user_details , setintel , updateUI}){
         await updateDoc(materialRef , {
             classes : arrayUnion(newClass)
         })
+        setintel([...intel,newClass])
+        
     }
 
     const checkMate = () =>{

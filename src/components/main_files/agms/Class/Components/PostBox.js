@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
     
   }));
 
-function PostBox({user_details , classDetails}) {
+function PostBox({user_details , classDetails , setClassDetails}) {
 
     const selectedCode = classDetails.code_class;
 
@@ -163,6 +163,11 @@ function PostBox({user_details , classDetails}) {
             class_materials : arrayUnion(real_obj),
             fake_class_materials : arrayUnion(fake_obj)
         })
+
+        let tempArray = classDetails.class_materials;
+        tempArray.push(real_obj);
+
+        setClassDetails({...classDetails,class_materials : tempArray});
 
         setpost("");
         setselectedimage();

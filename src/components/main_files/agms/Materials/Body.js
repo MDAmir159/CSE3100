@@ -172,8 +172,8 @@ function Body({user_details}){
             <div className={classes.root}>
               <div className = {classes.button}>
                 {
-                  (user_details.type === "student") ? (<JoinClass user_details = {user_details} updateUI = {updateUI}/>) 
-                  : (<CreateClass user_details ={user_details} setintel = {setintel} updateUI = {updateUI}/>)
+                  (user_details.type === "student") ? (<JoinClass intel = {intel} user_details = {user_details} setintel = {setintel} updateUI = {updateUI}/>) 
+                  : (<CreateClass intel = {intel} user_details ={user_details} setintel = {setintel} updateUI = {updateUI}/>)
                 }
               </div>
                 <br/>
@@ -184,7 +184,12 @@ function Body({user_details}){
                 </Grid>
             </div>
           ) : (     //// after selecting the class now getting to the class
-            <Class classDetails = {classDetails} xs1 = {classroom.user_type} user_details = {user_details} go_back_list = {go_back_list} />
+            <Class classDetails = {classDetails} 
+              xs1 = {classroom.user_type} 
+              user_details = {user_details} 
+              go_back_list = {go_back_list} 
+              setClassDetails = {setClassDetails} 
+            />
           ) //
         }
       </div>

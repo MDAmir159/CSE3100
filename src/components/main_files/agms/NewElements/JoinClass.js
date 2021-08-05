@@ -12,7 +12,7 @@ import { doc, addDoc, getFirestore, updateDoc , getDoc , arrayUnion} from "fireb
 import { makeStyles } from '@material-ui/core/styles';
 
 
-function JoinClass({user_details , updateUI}) {
+function JoinClass({intel , user_details , setintel , updateUI}) {
 
     const useStyles = makeStyles((theme) => ({
         button_style:{
@@ -62,6 +62,7 @@ function JoinClass({user_details , updateUI}) {
         await updateDoc(authRef , {
             students : arrayUnion(newStudent)
         })
+        setintel([...intel,newClass])
     }
 
     const UpdateStudentClassList = async() =>{

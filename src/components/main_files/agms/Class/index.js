@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     }
     
 });
-function Class({ classDetails , xs1 , user_details , go_back_list}){
+function Class({ classDetails , xs1 , user_details , go_back_list , setClassDetails}){
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -52,7 +52,7 @@ function Class({ classDetails , xs1 , user_details , go_back_list}){
                     <div>
                         {
                             (value === 0) && (
-                                <FacultyWindow user_details = {user_details} classDetails = {classDetails} />
+                                <FacultyWindow user_details = {user_details} classDetails = {classDetails} setClassDetails = {setClassDetails} />
                             )
                         }
                         {
