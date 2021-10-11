@@ -1,0 +1,82 @@
+.root{
+    display: flex;
+    height: 100vh;
+    background-image: url("/src/components/LogInForm/VvHazk (1).jpg");
+    
+}
+.root .login-container{
+    width: 55vh;
+    height: 60vh;
+    background-image: linear-gradient(to bottom right , rgba(46, 133, 19, 0.733)  , #FFAB);
+    position: absolute;
+    right: 290px;
+    bottom: 170px;
+    border-radius: 10%;
+    
+}
+
+.root .login-container .login-elements{
+    display: block;
+    margin-top: 30px;
+}
+
+.root .login-container .login-elements .h2{
+    font-family: cursive;
+    margin-left: 162px;
+    color: rgb(18, 20, 20);
+}
+.root .login-container .login-elements .login-elements-labels{
+    margin-bottom: 15px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-family: cursive;
+}
+
+.root .login-container .login-elements .login-elements-input{
+    border-radius: 30%;
+}
+
+.root .login-container .login-elements  .login-elements-select_options{
+    width: 92%;
+    font-family: cursive;
+    cursor: null;
+}
+
+.root .login-container .login-elements input{
+    width: 90%;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 10px;
+    transition: .3s;
+    border-color: rgb(255, 255, 255);
+    text-align: center;
+    font-family: cursive;
+}
+
+.root .login-container .login-elements input:focus{
+    box-shadow: 0px 0px 3px rgba(46, 133, 19, 0.733);
+    background-color: rgb(236, 229, 220);
+    font-size: 15px;
+    font-family: cursive;
+}
+
+.root .login-container .login-elements input[type = submit ]{
+    width: 92%;
+    font-size: 15px;
+    font-family: cursive;
+    color: cornsilk;
+    background-color: rgb(24, 148, 121);
+    border-color: rgb(24, 148, 121);
+}
+
+
+.root .login-container .login-elements input:focus[type = submit]{
+    background-color: rgb(8, 59, 48);
+}
+
+.root .login-container .login-elements .login-elements-select_options{
+    margin-left:  40px;
+    margin-bottom: 40px;   
+}
